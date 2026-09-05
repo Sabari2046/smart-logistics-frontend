@@ -1,0 +1,147 @@
+/* Page Containers & Utilities */
+.page-container {
+  padding: 0;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0f5ff 0%, #e6f4ff 100%);
+  padding: 24px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+}
+
+.stat-card-gradient-primary {
+  background: linear-gradient(135deg, #1677ff 0%, #0958d9 100%);
+  color: #ffffff !important;
+}
+
+.stat-card-gradient-success {
+  background: linear-gradient(135deg, #52c41a 0%, #389e0d 100%);
+  color: #ffffff !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Status colors and timeline badges */
+.timeline-dot-pulse {
+  position: relative;
+}
+
+.timeline-dot-pulse::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: rgba(22, 119, 255, 0.4);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 0 2px;
+  }
+
+  .auth-container {
+    padding: 12px;
+  }
+
+  .stat-card .ant-statistic-content-value {
+    font-size: 22px !important;
+  }
+
+  .page-header {
+    margin-bottom: 16px !important;
+  }
+
+  .page-header h3 {
+    font-size: 18px !important;
+  }
+
+  .ant-table {
+    font-size: 13px !important;
+  }
+
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    padding: 10px 8px !important;
+  }
+
+  /* Responsive Steps component for tracking and dispatching */
+  .ant-steps {
+    flex-wrap: wrap;
+  }
+
+  .ant-steps-item {
+    min-width: 100px;
+  }
+
+  .ant-steps-item-title {
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+  }
+
+  .ant-steps-item-description {
+    font-size: 10px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .ant-form-item {
+    margin-bottom: 16px !important;
+  }
+
+  .ant-card-head-title {
+    font-size: 14px !important;
+  }
+
+  .stat-card .ant-card-body {
+    padding: 14px 16px !important;
+  }
+}
+
