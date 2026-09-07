@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Checkbox, Typography, Divider, Alert, Space } from 'antd';
+import { Form, Input, Button, Checkbox, Typography, Alert, Space } from 'antd';
 import {
   UserOutlined,
   LockOutlined,
   LoginOutlined,
-  SafetyCertificateOutlined,
   ArrowRightOutlined,
   DashboardOutlined,
 } from '@ant-design/icons';
@@ -59,11 +58,6 @@ const Login = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleQuickLogin = (email, password) => {
-    form.setFieldsValue({ email, password });
-    onFinish({ email, password });
   };
 
   return (
@@ -134,7 +128,7 @@ const Login = () => {
         >
           <Input
             prefix={<UserOutlined style={{ color: '#bfbfbf' }} />}
-            placeholder="admintransbayx@gmail.com"
+            placeholder="name@company.com"
             style={{ borderRadius: '8px' }}
           />
         </Form.Item>
@@ -183,32 +177,12 @@ const Login = () => {
         </Form.Item>
       </Form>
 
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '8px' }}>
         <Text type="secondary">Don't have an account? </Text>
         <Link to="/register" style={{ fontWeight: 600, color: '#1677ff' }}>
           Register as Customer
         </Link>
       </div>
-
-      <Divider plain style={{ color: '#8c8c8c', fontSize: '12px', margin: '20px 0' }}>
-        <SafetyCertificateOutlined style={{ marginRight: '6px' }} /> Quick Administrator Fill
-      </Divider>
-
-      <Button
-        size="middle"
-        onClick={() => handleQuickLogin('admintransbayx@gmail.com', 'Admin@123')}
-        style={{
-          width: '100%',
-          borderRadius: '8px',
-          fontSize: '13px',
-          fontWeight: 600,
-          background: '#f9f0ff',
-          borderColor: '#d3adf7',
-          color: '#722ed1',
-        }}
-      >
-        🛡️ Quick Fill Admin (admintransbayx@gmail.com)
-      </Button>
     </div>
   );
 };

@@ -47,8 +47,6 @@ const LandingPage = () => {
   const [trackingNumber, setTrackingNumber] = useState('');
   const [trackingData, setTrackingData] = useState(null);
   const [trackingLoading, setTrackingLoading] = useState(false);
-  const [quickLoginLoading, setQuickLoginLoading] = useState(false);
-
   const handleTrack = async () => {
     if (!trackingNumber.trim()) {
       message.warning('Please enter a tracking number (e.g. TBX202610001)');
@@ -64,21 +62,6 @@ const LandingPage = () => {
       message.error('No shipment found with this tracking number. Please check and try again.');
     } finally {
       setTrackingLoading(false);
-    }
-  };
-
-  const handleQuickDemoLogin = async (email, password, targetDashboard) => {
-    try {
-      setQuickLoginLoading(true);
-      const response = await authService.login({ email, password });
-      dispatch(loginSuccess(response));
-      message.success(`Logged in as ${response.fullName}!`);
-      navigate(targetDashboard);
-    } catch (error) {
-      message.error('Quick login failed. Redirecting to login page...');
-      navigate('/login');
-    } finally {
-      setQuickLoginLoading(false);
     }
   };
 
@@ -289,38 +272,6 @@ const LandingPage = () => {
                   Waybill Radar
                 </Button>
               </Space>
-
-              {/* Quick Admin Launcher Card */}
-              <Card
-                size="small"
-                style={{
-                  borderRadius: '12px',
-                  border: '1px dashed #91caff',
-                  background: '#f0f7ff',
-                  marginBottom: '24px',
-                }}
-                styles={{ body: { padding: '12px 16px' } }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
-                  <div>
-                    <span style={{ fontSize: '13px', fontWeight: 700, color: '#1677ff' }}>
-                      🛡️ Administrator Quick Access:
-                    </span>
-                    <span style={{ fontSize: '12px', color: '#595959', marginLeft: '8px' }}>
-                      admintransbayx@gmail.com
-                    </span>
-                  </div>
-                  <Button
-                    size="small"
-                    type="primary"
-                    loading={quickLoginLoading}
-                    onClick={() => handleQuickDemoLogin('admintransbayx@gmail.com', 'Admin@123', '/admin/dashboard')}
-                    style={{ background: '#722ed1', borderColor: '#722ed1', fontWeight: 600 }}
-                  >
-                    Open Admin Console
-                  </Button>
-                </div>
-              </Card>
 
               {/* Quick Tracking Search Card */}
               <Card
@@ -560,9 +511,9 @@ const LandingPage = () => {
             </Col>
 
             <Col xs={12} md={7}>
-              <div style={{ fontWeight: 700, fontSize: '15px', marginBottom: '16px', color: '#ffffff' }}>System Administration</div>
+              <div style={{ fontWeight: 700, fontSize: '15px', marginBottom: '16px', color: '#ffffff' }}>Enterprise Platform</div>
               <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.75)', lineHeight: 1.8 }}>
-                <div>Admin: <strong>admintransbayx@gmail.com</strong></div>
+                <div>Enterprise End-to-End Fleet Telematics</div>
                 <div>Status: <strong>Active Cloud Production</strong></div>
               </div>
             </Col>
