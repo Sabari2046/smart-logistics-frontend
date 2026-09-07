@@ -1,5 +1,5 @@
 /**
- * SmartLogistics POD (Proof of Delivery) OTP Generator & Validator
+ * TransBayX POD (Proof of Delivery) OTP Generator & Validator
  * 
  * Generates a deterministic 6-digit handover OTP based on tracking number / shipment ID.
  * This guarantees the exact same code is shown on:

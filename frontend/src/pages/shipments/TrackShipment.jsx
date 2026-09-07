@@ -117,14 +117,14 @@ const TrackShipment = () => {
             Live Consignment & Parcel Tracking
           </Title>
           <Paragraph type="secondary" style={{ margin: 0, fontSize: '14px' }}>
-            Enter your SLF tracking code to view live milestone updates, vehicle telemetry, and estimated delivery dates.
+            Enter your TransBayX (TBX) waybill code to view live milestone updates, vehicle telemetry, and estimated delivery dates.
           </Paragraph>
         </div>
 
         <Space.Compact style={{ width: '100%', maxWidth: '640px', margin: '0 auto', display: 'flex' }}>
           <Input
             size="large"
-            placeholder="Enter Tracking ID (e.g. SLF202610001, SLF202610002)"
+            placeholder="Enter Tracking ID (e.g. TBX202610001)"
             value={inputNumber}
             onChange={(e) => setInputNumber(e.target.value)}
             onPressEnter={() => handleSearch(inputNumber)}
@@ -143,7 +143,7 @@ const TrackShipment = () => {
         </Space.Compact>
 
         <div style={{ textAlign: 'center', marginTop: '12px', fontSize: '12px', color: '#8c8c8c' }}>
-          Sample tracking codes: <a onClick={() => { setInputNumber('SLF202610001'); handleSearch('SLF202610001'); }}>SLF202610001</a> (Delivered) • <a onClick={() => { setInputNumber('SLF202610002'); handleSearch('SLF202610002'); }}>SLF202610002</a> (In Transit) • <a onClick={() => { setInputNumber('SLF202610005'); handleSearch('SLF202610005'); }}>SLF202610005</a> (Delayed)
+          Enter your unique TBX consignment number provided at booking.
         </div>
       </Card>
 

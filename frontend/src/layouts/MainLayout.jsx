@@ -61,7 +61,7 @@ const MainLayout = ({ children }) => {
             background: 'transparent',
           }}
         >
-          SmartLogistics © {new Date().getFullYear()} — Intelligent Fleet & Logistics Management.
+          TransBayX © {new Date().getFullYear()} — Intelligent Fleet & Logistics Management.
         </Footer>
       </Layout>
     </Layout>

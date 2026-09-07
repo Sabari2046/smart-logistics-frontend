@@ -51,7 +51,7 @@ const LandingPage = () => {
 
   const handleTrack = async () => {
     if (!trackingNumber.trim()) {
-      message.warning('Please enter a tracking number (e.g. SLF202610001)');
+      message.warning('Please enter a tracking number (e.g. TBX202610001)');
       return;
     }
 
@@ -128,7 +128,7 @@ const LandingPage = () => {
           </div>
           <div>
             <div style={{ fontSize: '18px', fontWeight: 800, color: '#1f1f1f', lineHeight: 1.2 }}>
-              SmartLogistics
+              TransBayX
             </div>
             <div style={{ fontSize: '11px', color: '#8c8c8c', fontWeight: 600 }}>
               Fleet & Delivery SaaS
@@ -290,7 +290,7 @@ const LandingPage = () => {
                 </Button>
               </Space>
 
-              {/* Quick Demo 1-Click Launchers */}
+              {/* Quick Admin Launcher Card */}
               <Card
                 size="small"
                 style={{
@@ -301,38 +301,25 @@ const LandingPage = () => {
                 }}
                 styles={{ body: { padding: '12px 16px' } }}
               >
-                <div style={{ fontSize: '12px', fontWeight: 700, color: '#1677ff', marginBottom: '8px' }}>
-                  ⚡ Instant 1-Click Demo Launchers:
-                </div>
-                <Space wrap size="small">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
+                  <div>
+                    <span style={{ fontSize: '13px', fontWeight: 700, color: '#1677ff' }}>
+                      🛡️ Administrator Quick Access:
+                    </span>
+                    <span style={{ fontSize: '12px', color: '#595959', marginLeft: '8px' }}>
+                      admintransbayx@gmail.com
+                    </span>
+                  </div>
                   <Button
                     size="small"
                     type="primary"
                     loading={quickLoginLoading}
-                    onClick={() => handleQuickDemoLogin('admin@smartlogistics.com', 'Admin@123', '/admin/dashboard')}
+                    onClick={() => handleQuickDemoLogin('admintransbayx@gmail.com', 'Admin@123', '/admin/dashboard')}
                     style={{ background: '#722ed1', borderColor: '#722ed1', fontWeight: 600 }}
                   >
-                    🛡️ Admin Console
+                    Open Admin Console
                   </Button>
-                  <Button
-                    size="small"
-                    type="primary"
-                    loading={quickLoginLoading}
-                    onClick={() => handleQuickDemoLogin('driver.arun@smartlogistics.com', 'Driver@123', '/driver/dashboard')}
-                    style={{ background: '#fa8c16', borderColor: '#fa8c16', fontWeight: 600 }}
-                  >
-                    🚚 Driver Portal
-                  </Button>
-                  <Button
-                    size="small"
-                    type="primary"
-                    loading={quickLoginLoading}
-                    onClick={() => handleQuickDemoLogin('customer.rahul@gmail.com', 'Customer@123', '/customer/dashboard')}
-                    style={{ background: '#52c41a', borderColor: '#52c41a', fontWeight: 600 }}
-                  >
-                    📦 Customer Portal
-                  </Button>
-                </Space>
+                </div>
               </Card>
 
               {/* Quick Tracking Search Card */}
@@ -352,7 +339,7 @@ const LandingPage = () => {
                 <Space.Compact style={{ width: '100%' }}>
                   <Input
                     size="large"
-                    placeholder="Enter Tracking ID (e.g. SLF202610001)"
+                    placeholder="Enter Tracking ID (e.g. TBX202610001)"
                     value={trackingNumber}
                     onChange={(e) => setTrackingNumber(e.target.value)}
                     onPressEnter={handleTrack}
@@ -369,7 +356,7 @@ const LandingPage = () => {
                   </Button>
                 </Space.Compact>
                 <div style={{ marginTop: '8px', fontSize: '12px', color: '#8c8c8c' }}>
-                  Sample tracking codes: <a onClick={() => setTrackingNumber('SLF202610001')}>SLF202610001</a> (Delivered), <a onClick={() => setTrackingNumber('SLF202610002')}>SLF202610002</a> (In Transit), <a onClick={() => setTrackingNumber('SLF202610005')}>SLF202610005</a> (Delayed)
+                  Enter your TBX consignment waybill number for real-time telemetry updates.
                 </div>
               </Card>
 
@@ -441,7 +428,7 @@ const LandingPage = () => {
                 {/* Interactive Stepper Mockup */}
                 <Card size="small" style={{ borderRadius: '12px', background: '#f8fafc', marginBottom: '16px' }}>
                   <div style={{ fontSize: '13px', fontWeight: 700, marginBottom: '8px', color: '#1677ff' }}>
-                    Shipment #SLF202610002 — In Highway Transit
+                    Shipment #TBX202610002 — In Highway Transit
                   </div>
                   <Steps
                     size="small"
@@ -458,15 +445,15 @@ const LandingPage = () => {
                   <Col span={12}>
                     <div style={{ padding: '12px', borderRadius: '10px', background: '#e6f4ff' }}>
                       <CarOutlined style={{ color: '#1677ff', fontSize: '20px' }} />
-                      <div style={{ fontSize: '18px', fontWeight: 800, color: '#1f1f1f', marginTop: '4px' }}>5 Units</div>
-                      <div style={{ fontSize: '11px', color: '#595959' }}>Commercial Fleet Ready</div>
+                      <div style={{ fontSize: '18px', fontWeight: 800, color: '#1f1f1f', marginTop: '4px' }}>Enterprise Fleet</div>
+                      <div style={{ fontSize: '11px', color: '#595959' }}>Real-time Capacity Matching</div>
                     </div>
                   </Col>
                   <Col span={12}>
                     <div style={{ padding: '12px', borderRadius: '10px', background: '#f6ffed' }}>
                       <TeamOutlined style={{ color: '#52c41a', fontSize: '20px' }} />
-                      <div style={{ fontSize: '18px', fontWeight: 800, color: '#1f1f1f', marginTop: '4px' }}>3 Certified</div>
-                      <div style={{ fontSize: '11px', color: '#595959' }}>Drivers Available</div>
+                      <div style={{ fontSize: '18px', fontWeight: 800, color: '#1f1f1f', marginTop: '4px' }}>Certified Drivers</div>
+                      <div style={{ fontSize: '11px', color: '#595959' }}>Smart Route Automation</div>
                     </div>
                   </Col>
                 </Row>
@@ -556,10 +543,10 @@ const LandingPage = () => {
             <Col xs={24} md={10}>
               <Space align="center" style={{ marginBottom: '16px' }}>
                 <RocketOutlined style={{ fontSize: '24px', color: '#4096ff' }} />
-                <span style={{ fontSize: '20px', fontWeight: 800, color: '#ffffff' }}>SmartLogistics</span>
+                <span style={{ fontSize: '20px', fontWeight: 800, color: '#ffffff' }}>TransBayX</span>
               </Space>
               <Paragraph style={{ color: 'rgba(255, 255, 255, 0.65)', fontSize: '14px', lineHeight: 1.6 }}>
-                Production full-stack logistics SaaS built with Spring Boot 3.4, Java 21, MySQL, and React 19.
+                Next-generation enterprise logistics & fleet orchestration SaaS built with Spring Boot 3.4, Java 21, MySQL, and React 19.
               </Paragraph>
             </Col>
 
@@ -573,11 +560,10 @@ const LandingPage = () => {
             </Col>
 
             <Col xs={12} md={7}>
-              <div style={{ fontWeight: 700, fontSize: '15px', marginBottom: '16px', color: '#ffffff' }}>Demo Logins</div>
+              <div style={{ fontWeight: 700, fontSize: '15px', marginBottom: '16px', color: '#ffffff' }}>System Administration</div>
               <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.75)', lineHeight: 1.8 }}>
-                <div>Admin: <strong>admin@smartlogistics.com</strong> / Admin@123</div>
-                <div>Driver: <strong>driver.arun@smartlogistics.com</strong> / Driver@123</div>
-                <div>Customer: <strong>customer.rahul@gmail.com</strong> / Customer@123</div>
+                <div>Admin: <strong>admintransbayx@gmail.com</strong></div>
+                <div>Status: <strong>Active Cloud Production</strong></div>
               </div>
             </Col>
           </Row>
@@ -585,7 +571,7 @@ const LandingPage = () => {
           <Divider style={{ borderColor: 'rgba(255, 255, 255, 0.15)', margin: '32px 0 20px' }} />
 
           <div style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.5)', fontSize: '12px' }}>
-            SmartLogistics © {new Date().getFullYear()} — Intelligent Fleet Management System.
+            TransBayX © {new Date().getFullYear()} — Intelligent Fleet Management System.
           </div>
         </div>
       </footer>

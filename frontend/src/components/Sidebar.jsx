@@ -187,11 +187,11 @@ const Sidebar = ({ collapsed, isMobile, drawerOpen, onClose }) => {
             flexShrink: 0,
           }}
         >
-          SL
+          TBX
         </div>
         {(isMobile || !collapsed) && (
           <span style={{ fontWeight: 700, fontSize: '15px', color: '#141414', letterSpacing: '-0.2px' }}>
-            SmartLogistics
+            TransBayX
           </span>
         )}
       </div>

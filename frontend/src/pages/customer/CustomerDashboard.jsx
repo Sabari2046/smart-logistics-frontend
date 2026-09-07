@@ -253,7 +253,7 @@ const CustomerDashboard = () => {
             <form onSubmit={handleTrackQuickSearch} style={{ display: 'flex', gap: 8 }}>
               <Input
                 size="large"
-                placeholder="e.g. SLF202610001"
+                placeholder="e.g. TBX202610001"
                 prefix={<SearchOutlined style={{ color: '#8c8c8c' }} />}
                 value={trackingInput}
                 onChange={(e) => setTrackingInput(e.target.value)}

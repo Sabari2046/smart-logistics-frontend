@@ -608,7 +608,7 @@ public class ShipmentServiceImpl implements ShipmentService {
         String candidate;
         do {
             int seq = ThreadLocalRandom.current().nextInt(10000, 99999);
-            candidate = "SLF" + currentYear + seq;
+            candidate = "TBX" + currentYear + seq;
         } while (shipmentRepository.findByTrackingNumber(candidate).isPresent());
         return candidate;
     }

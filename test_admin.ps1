@@ -1,4 +1,4 @@
-$login = Invoke-RestMethod -Uri "http://localhost:8081/api/auth/login" -Method Post -Body '{"email":"admin@smartlogistics.com","password":"Admin@123"}' -ContentType "application/json"
+$login = Invoke-RestMethod -Uri "http://localhost:8081/api/auth/login" -Method Post -Body '{"email":"admintransbayx@gmail.com","password":"Admin@123"}' -ContentType "application/json"
 Write-Host "Login Token Prefix:" $login.token.Substring(0, 20) "..."
 Write-Host "Role:" $login.role "FullName:" $login.fullName
 

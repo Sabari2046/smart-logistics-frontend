@@ -373,7 +373,7 @@ const DriverList = () => {
                   { type: 'email', message: 'Enter valid email' },
                 ]}
               >
-                <Input placeholder="driver@smartlogistics.com" disabled={!!editingDriver} />
+                <Input placeholder="driver@transbayx.com" disabled={!!editingDriver} />
               </Form.Item>
             </Col>
           </Row>

@@ -44,7 +44,7 @@ const Register = () => {
       });
 
       dispatch(loginSuccess(response));
-      message.success('Account created successfully! Welcome to SmartLogistics.');
+      message.success('Account created successfully! Welcome to TransBayX.');
       navigate('/customer/dashboard', { replace: true });
     } catch (error) {
       const msg = error.response?.data?.message || 'Registration failed. Please check your information.';

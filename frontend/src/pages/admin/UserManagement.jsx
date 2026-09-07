@@ -113,7 +113,7 @@ const UserManagement = () => {
             onChange={() => handleStatusToggle(record.id, status)}
             checkedChildren="Active"
             unCheckedChildren="Inactive"
-            disabled={record.email === 'admin@smartlogistics.com'}
+            disabled={record.email === 'admintransbayx@gmail.com' || record.role === 'ROLE_ADMIN'}
           />
           <Tag color={status === 'ACTIVE' ? 'success' : 'default'}>
             {status}

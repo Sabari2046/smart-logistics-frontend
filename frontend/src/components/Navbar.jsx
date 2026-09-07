@@ -99,58 +99,11 @@ const Navbar = ({ collapsed, setCollapsed, isMobile, mobileDrawerOpen, setMobile
     navigate('/login');
   };
 
-  const handleQuickSwitch = async (email, password, targetDashboard) => {
-    try {
-      setSwitchingRole(true);
-      const response = await authService.login({ email, password });
-      dispatch(loginSuccess(response));
-      message.success(`Switched account to ${response.fullName} (${response.role.replace('ROLE_', '')})`);
-      navigate(targetDashboard);
-    } catch (err) {
-      message.error('Role switch failed: ' + (err.response?.data?.message || err.message));
-    } finally {
-      setSwitchingRole(false);
-    }
-  };
-
-  const roleMenuItems = [
-    {
-      key: 'switch-admin',
-      icon: <SafetyCertificateFilled style={{ color: '#722ed1' }} />,
-      label: 'Admin (System Administrator)',
-      disabled: role === 'ROLE_ADMIN',
-      onClick: () => handleQuickSwitch('admin@smartlogistics.com', 'Admin@123', '/admin/dashboard'),
-    },
-    {
-      key: 'switch-driver',
-      icon: <CarFilled style={{ color: '#1677ff' }} />,
-      label: 'Driver (Arun Kumar)',
-      disabled: role === 'ROLE_DRIVER',
-      onClick: () => handleQuickSwitch('driver.arun@smartlogistics.com', 'Driver@123', '/driver/dashboard'),
-    },
-    {
-      key: 'switch-customer',
-      icon: <ShoppingFilled style={{ color: '#52c41a' }} />,
-      label: 'Customer (Rahul Menon)',
-      disabled: role === 'ROLE_CUSTOMER',
-      onClick: () => handleQuickSwitch('customer.rahul@gmail.com', 'Customer@123', '/customer/dashboard'),
-    },
-  ];
-
   const userMenuItems = [
     {
       key: 'profile',
       label: <Link to="/profile">My Profile</Link>,
       icon: <UserOutlined />,
-    },
-    {
-      type: 'divider',
-    },
-    {
-      key: 'roles',
-      label: 'Switch Role',
-      icon: <SwapOutlined />,
-      children: roleMenuItems,
     },
     {
       type: 'divider',
@@ -168,73 +121,87 @@ const Navbar = ({ collapsed, setCollapsed, isMobile, mobileDrawerOpen, setMobile
   const roleColor = role === 'ROLE_ADMIN' ? 'purple' : role === 'ROLE_DRIVER' ? 'blue' : 'green';
 
   const notificationContent = (
-    <div style={{ width: isMobile ? '280px' : '320px', maxHeight: '380px', overflowY: 'auto' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', borderBottom: '1px solid #f0f0f0', paddingBottom: '8px' }}>
-        <Text strong>System Alerts & Notifications</Text>
-        <Badge count={alerts.length} style={{ backgroundColor: '#ff4d4f' }} />
+    <div style={{ width: '320px', maxHeight: '360px', overflowY: 'auto' }}>
+      <div style={{ fontWeight: 700, padding: '8px 12px', borderBottom: '1px solid #f0f0f0', display: 'flex', justifyContent: 'space-between' }}>
+        <span>System Alerts & Notifications</span>
+        <Tag color="error">{alerts.length} Active</Tag>
       </div>
-
-      {alerts.length === 0 ? (
-        <div style={{ padding: '24px 0', textAlign: 'center', color: '#8c8c8c' }}>
-          No urgent alerts. All fleet systems optimal.
-        </div>
-      ) : (
-        <List
-          dataSource={alerts}
-          renderItem={(item) => (
-            <List.Item
-              style={{ padding: '10px 0', cursor: 'pointer' }}
-              onClick={() => navigate(item.path)}
-            >
-              <List.Item.Meta
-                avatar={
-                  item.type === 'delay' ? (
-                    <ExclamationCircleOutlined style={{ color: '#ff4d4f', fontSize: '18px', marginTop: '2px' }} />
-                  ) : (
-                    <ToolOutlined style={{ color: '#fa8c16', fontSize: '18px', marginTop: '2px' }} />
-                  )
-                }
-                title={<span style={{ fontSize: '13px', fontWeight: 600 }}>{item.title}</span>}
-                description={<span style={{ fontSize: '12px' }}>{item.description}</span>}
-              />
-            </List.Item>
-          )}
-        />
-      )}
+      <List
+        size="small"
+        dataSource={alerts}
+        locale={{ emptyText: 'No critical alerts at this time' }}
+        renderItem={(item) => (
+          <List.Item
+            style={{ cursor: 'pointer', padding: '10px 12px' }}
+            onClick={() => {
+              if (item.type === 'DELAY') navigate('/admin/delayed-shipments');
+              if (item.type === 'MAINTENANCE') navigate('/admin/maintenance');
+            }}
+          >
+            <List.Item.Meta
+              avatar={
+                item.type === 'DELAY' ? (
+                  <Badge dot color="red">
+                    <ClockCircleOutlined style={{ fontSize: '18px', color: '#ff4d4f' }} />
+                  </Badge>
+                ) : (
+                  <Badge dot color="orange">
+                    <ToolOutlined style={{ fontSize: '18px', color: '#faad14' }} />
+                  </Badge>
+                )
+              }
+              title={<span style={{ fontSize: '12px', fontWeight: 600 }}>{item.title}</span>}
+              description={<span style={{ fontSize: '11px', color: '#8c8c8c' }}>{item.desc}</span>}
+            />
+          </List.Item>
+        )}
+      />
     </div>
   );
-
-  const toggleSidebar = () => {
-    if (isMobile) {
-      setMobileDrawerOpen(!mobileDrawerOpen);
-    } else {
-      setCollapsed(!collapsed);
-    }
-  };
 
   return (
     <Header
       style={{
-        padding: isMobile ? '0 12px' : '0 20px',
         background: '#ffffff',
+        padding: isMobile ? '0 12px' : '0 24px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+        borderBottom: '1px solid #f0f0f0',
         position: 'sticky',
         top: 0,
         zIndex: 99,
-        boxShadow: '0 1px 4px rgba(0, 21, 41, 0.06)',
-        borderBottom: '1px solid #f0f0f0',
         height: '64px',
-        lineHeight: 'normal',
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.02)',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? '8px' : '14px', lineHeight: 'normal' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? '8px' : '16px', lineHeight: 'normal' }}>
         <Button
           type="text"
-          icon={isMobile ? <MenuOutlined /> : collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-          onClick={toggleSidebar}
-          style={{ fontSize: '18px', width: 38, height: 38, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          icon={
+            isMobile ? (
+              <MenuUnfoldOutlined style={{ fontSize: '18px' }} />
+            ) : collapsed ? (
+              <MenuUnfoldOutlined style={{ fontSize: '18px' }} />
+            ) : (
+              <MenuFoldOutlined style={{ fontSize: '18px' }} />
+            )
+          }
+          onClick={() => {
+            if (isMobile) {
+              setMobileDrawerOpen(!mobileDrawerOpen);
+            } else {
+              setCollapsed(!collapsed);
+            }
+          }}
+          style={{
+            fontSize: '16px',
+            width: 40,
+            height: 40,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
         />
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', lineHeight: 'normal' }}>
@@ -256,7 +223,7 @@ const Navbar = ({ collapsed, setCollapsed, isMobile, mobileDrawerOpen, setMobile
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <span style={{ fontSize: isMobile ? '14px' : '15px', fontWeight: 800, color: '#1f1f1f', lineHeight: '1.2' }}>
-              SmartLogistics
+              TransBayX
             </span>
             {!isMobile && (
               <span style={{ fontSize: '11px', color: '#8c8c8c', fontWeight: 500, lineHeight: '1.2' }}>
@@ -268,27 +235,6 @@ const Navbar = ({ collapsed, setCollapsed, isMobile, mobileDrawerOpen, setMobile
       </div>
 
       <Space size={isMobile ? 'small' : 'middle'} align="center" style={{ lineHeight: 'normal' }}>
-        {/* Quick Role Switcher Dropdown */}
-        <Dropdown menu={{ items: roleMenuItems }} placement="bottomRight" arrow>
-          <Button
-            size="small"
-            icon={<SwapOutlined />}
-            loading={switchingRole}
-            style={{
-              borderRadius: '6px',
-              fontWeight: 600,
-              fontSize: '12px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px',
-              borderColor: '#d9d9d9',
-              padding: isMobile ? '0 8px' : '0 10px',
-            }}
-          >
-            {isMobile ? 'Role' : 'Switch Role'}
-          </Button>
-        </Dropdown>
-
         {role === 'ROLE_ADMIN' && (
           <Popover content={notificationContent} trigger="click" placement="bottomRight">
             <Badge count={alerts.length} offset={[-2, 2]}>

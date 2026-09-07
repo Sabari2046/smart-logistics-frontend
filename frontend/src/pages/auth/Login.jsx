@@ -73,7 +73,7 @@ const Login = () => {
           Welcome Back
         </Title>
         <Paragraph type="secondary" style={{ fontSize: '14px', margin: 0 }}>
-          Sign in to access your smart logistics console.
+          Sign in to access your TransBayX logistics console.
         </Paragraph>
       </div>
 
@@ -134,7 +134,7 @@ const Login = () => {
         >
           <Input
             prefix={<UserOutlined style={{ color: '#bfbfbf' }} />}
-            placeholder="name@company.com"
+            placeholder="admintransbayx@gmail.com"
             style={{ borderRadius: '8px' }}
           />
         </Form.Item>
@@ -191,32 +191,24 @@ const Login = () => {
       </div>
 
       <Divider plain style={{ color: '#8c8c8c', fontSize: '12px', margin: '20px 0' }}>
-        <SafetyCertificateOutlined style={{ marginRight: '6px' }} /> Quick Demo Roles
+        <SafetyCertificateOutlined style={{ marginRight: '6px' }} /> Quick Administrator Fill
       </Divider>
 
-      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-        <Button
-          size="middle"
-          onClick={() => handleQuickLogin('admin@smartlogistics.com', 'Admin@123')}
-          style={{ flex: 1, borderRadius: '6px', fontSize: '12px', fontWeight: 600 }}
-        >
-          🛡️ Admin Demo
-        </Button>
-        <Button
-          size="middle"
-          onClick={() => handleQuickLogin('driver.arun@smartlogistics.com', 'Driver@123')}
-          style={{ flex: 1, borderRadius: '6px', fontSize: '12px', fontWeight: 600 }}
-        >
-          🚚 Driver Demo
-        </Button>
-        <Button
-          size="middle"
-          onClick={() => handleQuickLogin('customer.rahul@gmail.com', 'Customer@123')}
-          style={{ flex: 1, borderRadius: '6px', fontSize: '12px', fontWeight: 600 }}
-        >
-          📦 Customer Demo
-        </Button>
-      </div>
+      <Button
+        size="middle"
+        onClick={() => handleQuickLogin('admintransbayx@gmail.com', 'Admin@123')}
+        style={{
+          width: '100%',
+          borderRadius: '8px',
+          fontSize: '13px',
+          fontWeight: 600,
+          background: '#f9f0ff',
+          borderColor: '#d3adf7',
+          color: '#722ed1',
+        }}
+      >
+        🛡️ Quick Fill Admin (admintransbayx@gmail.com)
+      </Button>
     </div>
   );
 };

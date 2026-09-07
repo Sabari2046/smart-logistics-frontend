@@ -97,7 +97,7 @@ const AuthLayout = () => {
                   </div>
                   <div>
                     <div style={{ color: '#ffffff', fontSize: '20px', fontWeight: 800, lineHeight: 1.2 }}>
-                      SmartLogistics
+                      TransBayX
                     </div>
                     <div style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '12px' }}>
                       Fleet & Delivery Management
